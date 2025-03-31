@@ -10,14 +10,17 @@ import Link from "next/link";
 import { toast } from "sonner";
 import FormField from "./form-field";
 import { useRouter } from "next/navigation";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "@/firebase/client";
+import { signIn, signUp } from "@/lib/actions/auth.action";
 
 const authFormSchema = (type: FormType) => {
   return z.object({
-    name: type === 'sign-up' ? z.string().min(3) : z.string().optional(),
+    name: type === "sign-up" ? z.string().min(3) : z.string().optional(),
     email: z.string().email(),
     password: z.string().min(3),
-  })
-} 
+  });
+};
 
 const AuthForm = ({ type }: { type: FormType }) => {
   const router = useRouter();
@@ -33,29 +36,51 @@ const AuthForm = ({ type }: { type: FormType }) => {
   });
 
   // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
-      if (type === 'sign-up') {
-        toast.success('Account created successfully. Please sign in.')
-        router.push('/sign-in')
+      if (type === "sign-up") {
+        const { name, email, password } = values;
+        const userCredentials = await createUserWithEmailAndPassword(auth, email, password);
+        const result = await signUp({
+          uid: userCredentials.user.uid,
+          name: name!,
+          email,
+          password,
+        })
+        if (!result?.success) {
+          toast.error(result?.message);
+          return;
+        }
+        toast.success("Account created successfully. Please sign in.");
+        router.push("/sign-in");
       } else {
+        const { email, password } = values;
+        const userCredentials = await signInWithEmailAndPassword(auth, email, password);
+        const idToken = await userCredentials.user.getIdToken();
+        if (!idToken) {
+          toast.error("Sign in failed.")
+          return;
+        }
+        await signIn({
+          email, idToken
+        })
         toast.success("Sign in successful.");
         router.push("/");
       }
     } catch (error) {
       console.log(error);
-      toast.error(`Something went wrong: ${error}`)
+      toast.error(`Something went wrong: ${error}`);
     }
   }
-  const isSignIn = type === 'sign-in';
+  const isSignIn = type === "sign-in";
   return (
     <div className="card-border lg:min-w-[566px]">
       <div className="flex flex-col gap-6 card py-14 px-10">
         <div className="flex flex-row gap-2 justify-center">
-          <Image src="/logo.svg" alt="logo.svg" height={128} width={152} />
-          <h2 className="text-primary-100">Get Ready</h2>
+          <Image src="/mcalogo.jpg" alt="logo.jpg" height={32} width={38} />
+          <h2 className="text-primary-100">Maurice Consulting Agency</h2>
         </div>
-        <h3>Your AI planner</h3>
+        <h3>Custom IT training and consultancy</h3>
       </div>
       <Form {...form}>
         <form

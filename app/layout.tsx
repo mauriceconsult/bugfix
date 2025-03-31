@@ -9,11 +9,11 @@ const monaSans = Mona_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Get Ready",
-  description: "Prepare your project plans in advance",
+  title: "Maurice Consulting Agency",
+  description: "Your professional training partner",
 };
 
-export default function RootLayout({
+export default function Layout({
   children,
 }: Readonly<{
   children: React.ReactNode;
