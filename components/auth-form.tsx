@@ -80,7 +80,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
           <Image src="/mcalogo.jpg" alt="logo.jpg" height={32} width={38} />
           <h2 className="text-primary-100">Maurice Consulting Agency</h2>
         </div>
-        <h3>Custom IT training and consultancy</h3>
+        <h3>Professional & IT training and consultancy</h3>
       </div>
       <Form {...form}>
         <form

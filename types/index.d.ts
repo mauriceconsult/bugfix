@@ -1,6 +1,6 @@
 interface Feedback {
   id: string;
-  interviewId: string;
+  assessmentId: string;
   totalScore: number;
   categoryScores: Array<{
     name: string;
@@ -13,9 +13,9 @@ interface Feedback {
   createdAt: string;
 }
 
-interface Interview {
+interface Assessment {
   id: string;
-  role: string;
+  course: string;
   level: string;
   questions: string[];
   specialtystack: string[];
@@ -26,9 +26,9 @@ interface Interview {
 }
 
 interface CreateFeedbackParams {
-  interviewId: string;
+  assessmentId: string;
   userId: string;
-  transcript: { role: string; content: string }[];
+  transcript: { course: string; content: string }[];
   feedbackId?: string;
 }
 
@@ -38,10 +38,10 @@ interface User {
   id: string;
 }
 
-interface InterviewCardProps {
-  interviewId?: string;
+interface AssessmentCardProps {
+  assessmentId?: string;
   userId?: string;
-  role: string;
+  course: string;
   type: string;
   specialtystack: string[];
   createdAt?: string;
@@ -50,7 +50,7 @@ interface InterviewCardProps {
 interface AgentProps {
   userName: string;
   userId?: string;
-  interviewId?: string;
+  assessmentId?: string;
   feedbackId?: string;
   type: "generate" | "interview";
   questions?: string[];
@@ -62,7 +62,7 @@ interface RouteParams {
 }
 
 interface GetFeedbackByInterviewIdParams {
-  interviewId: string;
+  assessmentId: string;
   userId: string;
 }
 
@@ -85,15 +85,15 @@ interface SignUpParams {
 
 type FormType = "sign-in" | "sign-up";
 
-interface InterviewFormProps {
-  interviewId: string;
-  role: string;
+interface AssessmentFormProps {
+  assessmentId: string;
+  course: string;
   level: string;
   type: string;
   specialtystack: string[];
   amount: number;
 }
 
-interface SpecialtyIconProps {
+interface TechIconProps {
   specialtyStack: string[];
 }

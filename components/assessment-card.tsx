@@ -7,14 +7,14 @@ import Link from "next/link";
 // import Image from 'next/image';
 import { getRandomInterviewCover } from "@/lib/utils";
 
-const InterviewCard = ({
-  interviewId,
+const AssessmentCard = ({
+  assessmentId,
   userId,
   role,
   type,
   specialtystack,
   createdAt,
-}: InterviewCardProps) => {
+}: AssessmentCardProps) => {
   const feedback = null as Feedback | null;
   const normalizedType = /mix/gi.test(type) ? "mixed" : type;
   const formattedDate = dayjs(
@@ -32,7 +32,7 @@ const InterviewCard = ({
           <div className="flex flex-row gap-5 mt-3">
             <div className="flex flex-row gap-2">
               <Image
-                src={"/calendar.png"}
+                src={"/calendar.svg"}
                 alt="calendar"
                 width={22}
                 height={22}
@@ -40,7 +40,7 @@ const InterviewCard = ({
               <p>{formattedDate}</p>
             </div>
             <div className="flex flex-row gap-2 items-center">
-              <Image src={"/star.png"} alt="star" width={22} height={22} />
+              <Image src={"/star.svg"} alt="star" width={22} height={22} />
               <p>{feedback?.totalScore || "---"}/100</p>
             </div>
           </div>
@@ -55,8 +55,8 @@ const InterviewCard = ({
             <Link
               href={
                 feedback
-                  ? `/interview/${interviewId}/feedback`
-                  : `/interview/${interviewId}`
+                  ? `/assessment/${assessmentId}/feedback`
+                  : `/assessment/${assessmentId}`
               }
             >
               {feedback ? "Check Feedback" : "View Assessment"}
@@ -68,4 +68,4 @@ const InterviewCard = ({
   );
 };
 
-export default InterviewCard;
+export default AssessmentCard;

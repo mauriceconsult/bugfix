@@ -1,105 +1,7 @@
 // import { CreateAssistantDTO } from "@vapi-ai/web/dist/api";
 // import { z } from "zod";
 
-export const mappings = {
-  "basic": "basic",
-  "intermediate": "intermediate",
-  "advanced": "advanced",
-  "refresher": "refresher"
-  // "react.js": "react",
-  // reactjs: "react",
-  // react: "react",
-  // "next.js": "nextjs",
-  // nextjs: "nextjs",
-  // next: "nextjs",
-  // "vue.js": "vuejs",
-  // vuejs: "vuejs",
-  // vue: "vuejs",
-  // "express.js": "express",
-  // expressjs: "express",
-  // express: "express",
-  // "node.js": "nodejs",
-  // nodejs: "nodejs",
-  // node: "nodejs",
-  // mongodb: "mongodb",
-  // mongo: "mongodb",
-  // mongoose: "mongoose",
-  // mysql: "mysql",
-  // postgresql: "postgresql",
-  // sqlite: "sqlite",
-  // firebase: "firebase",
-  // docker: "docker",
-  // kubernetes: "kubernetes",
-  // aws: "aws",
-  // azure: "azure",
-  // gcp: "gcp",
-  // digitalocean: "digitalocean",
-  // heroku: "heroku",
-  // photoshop: "photoshop",
-  // "adobe photoshop": "photoshop",
-  // html5: "html5",
-  // html: "html5",
-  // css3: "css3",
-  // css: "css3",
-  // sass: "sass",
-  // scss: "sass",
-  // less: "less",
-  // tailwindcss: "tailwindcss",
-  // tailwind: "tailwindcss",
-  // bootstrap: "bootstrap",
-  // jquery: "jquery",
-  // typescript: "typescript",
-  // ts: "typescript",
-  // javascript: "javascript",
-  // js: "javascript",
-  // "angular.js": "angular",
-  // angularjs: "angular",
-  // angular: "angular",
-  // "ember.js": "ember",
-  // emberjs: "ember",
-  // ember: "ember",
-  // "backbone.js": "backbone",
-  // backbonejs: "backbone",
-  // backbone: "backbone",
-  // nestjs: "nestjs",
-  // graphql: "graphql",
-  // "graph ql": "graphql",
-  // apollo: "apollo",
-  // webpack: "webpack",
-  // babel: "babel",
-  // "rollup.js": "rollup",
-  // rollupjs: "rollup",
-  // rollup: "rollup",
-  // "parcel.js": "parcel",
-  // parceljs: "parcel",
-  // npm: "npm",
-  // yarn: "yarn",
-  // git: "git",
-  // github: "github",
-  // gitlab: "gitlab",
-  // bitbucket: "bitbucket",
-  // figma: "figma",
-  // prisma: "prisma",
-  // redux: "redux",
-  // flux: "flux",
-  // redis: "redis",
-  // selenium: "selenium",
-  // cypress: "cypress",
-  // jest: "jest",
-  // mocha: "mocha",
-  // chai: "chai",
-  // karma: "karma",
-  // vuex: "vuex",
-  // "nuxt.js": "nuxt",
-  // nuxtjs: "nuxt",
-  // nuxt: "nuxt",
-  // strapi: "strapi",
-  // wordpress: "wordpress",
-  // contentful: "contentful",
-  // netlify: "netlify",
-  // vercel: "vercel",
-  // "aws amplify": "amplify",
-};
+ 
 
 // export const interviewer: CreateAssistantDTO = {
 //   name: "Interviewer",
@@ -124,8 +26,8 @@ export const mappings = {
 //     model: "gpt-4",
 //     messages: [
 //       {
-//         role: "system",
-//         content: `You are a professional job interviewer conducting a real-time voice interview with a candidate. Your goal is to assess their qualifications, motivation, and fit for the role.
+//         course: "system",
+//         content: `You are a professional job interviewer conducting a real-time voice interview with a candidate. Your goal is to assess their qualifications, motivation, and fit for the course.
 
 // Interview Guidelines:
 // Follow the structured question flow:
@@ -142,7 +44,7 @@ export const mappings = {
 // Avoid robotic phrasing—sound natural and conversational.
 // Answer the candidate’s questions professionally:
 
-// If asked about the role, company, or expectations, provide a clear and relevant answer.
+// If asked about the course, company, or expectations, provide a clear and relevant answer.
 // If unsure, redirect the candidate to HR for more details.
 
 // Conclude the interview properly:
@@ -197,14 +99,14 @@ export const interviewCovers = [
   "/advanced.jpg",
   "/basic.jpg",
   "/intermediate.jpg",
-  "/refresher.jpg" 
+  "/refresher.jpg",  
 ];
 
-export const dummyInterviews: Interview[] = [
+export const dummyAssessments: Assessment[] = [
   {
     id: "1",
     userId: "user1",
-    role: "Beginner professional",
+    course: "Introduction to computers & software development",
     type: "Technical",
     specialtystack: ["Beginner"],
     level: "Junior",
@@ -215,9 +117,9 @@ export const dummyInterviews: Interview[] = [
   {
     id: "2",
     userId: "user1",
-    role: "Professional programmer",
+    course: "Professional programmer",
     type: "Mixed",
-    specialtystack: ["Intermediate"],
+    specialtystack: ["Professional"],
     level: "Senior",
     questions: ["What is Node.js?"],
     finalized: false,
@@ -226,18 +128,7 @@ export const dummyInterviews: Interview[] = [
   {
     id: "3",
     userId: "user1",
-    role: "Senior professional programmer",
-    type: "Mixed",
-    specialtystack: ["Advanced"],
-    level: "Senior",
-    questions: ["What is Node.js?"],
-    finalized: false,
-    createdAt: "2024-03-14T15:30:00Z",
-  },
-  {
-    id: "4",
-    userId: "user1",
-    role: "Refresher professional programmer",
+    course: "Professional programmer refresher",
     type: "Mixed",
     specialtystack: ["Refresher"],
     level: "Senior",

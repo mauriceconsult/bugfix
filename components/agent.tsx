@@ -14,7 +14,7 @@ const Agent = ({ userName }: AgentProps) => {
   const isSpeaking = true;
   const messages = [
     "What is your name?",
-    "My name is Maurice, nice to meet you!",
+    "My name is John Doe, nice to meet you!",
   ];
   const lastMessage = messages[messages.length - 1];
   return (
@@ -36,7 +36,7 @@ const Agent = ({ userName }: AgentProps) => {
         <div className="card-border">
           <div className="card-content">
             <Image
-              src={"/avatar.jpg"}
+              src={"/user-avatar.png"}
               alt="user avatar"
               width={540}
               height={540}

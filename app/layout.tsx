@@ -10,7 +10,7 @@ const monaSans = Mona_Sans({
 
 export const metadata: Metadata = {
   title: "Maurice Consulting Agency",
-  description: "Your professional training partner",
+  description: "Professional & IT training partner",
 };
 
 export default function Layout({
@@ -21,7 +21,7 @@ export default function Layout({
   return (
     <html lang="en" className="dark">
       <body
-        className={`${monaSans.className} antialiased`}
+        className={`${monaSans.className} antialiased pattern` }
       >
         {children}
         <Toaster/>

@@ -5,16 +5,15 @@ import { db } from "@/firebase/admin";
 import { getRandomInterviewCover } from "@/lib/utils";
 
 export async function POST(request: Request) {
-  const { type, role, level, specialtystack, amount, userid } =
+  const { type, course, level, specialtystack, amount, userid } =
     await request.json();
-
   try {
     const { text: questions } = await generateText({
       model: google("gemini-2.0-flash-001"),
-      prompt: `Prepare questions for a job interview.
-        The job role is ${role}.
-        The job experience level is ${level}.
-        The tech stack used in the job is: ${specialtystack}.
+      prompt: `Prepare questions for a student interview.
+        The course is ${course}.
+        The student experience level is ${level}.
+        The specialty stack used in the course is: ${specialtystack}.
         The focus between behavioural and technical questions should lean towards: ${type}.
         The amount of questions required is: ${amount}.
         Please return only the questions, without any additional text.
@@ -27,7 +26,7 @@ export async function POST(request: Request) {
     });
 
     const assessment = {
-      role, type, level,
+      course, type, level,
       specialtystack: specialtystack.split(","),
       questions: JSON.parse(questions),
       userId: userid,
